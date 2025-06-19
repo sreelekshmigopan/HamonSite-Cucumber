@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Hamon Suite" verbose="1" parallel="classes" thread-count="5">
+    <test name="HamonTests">
+        <classes>
+            <class name="runner.testRunner"/>
+        </classes>
+    </test>
+</suite>
