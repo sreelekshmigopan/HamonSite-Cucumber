@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.opensite.pages.LoginPage;
 import org.testng.Assert;
 
@@ -15,12 +16,19 @@ public class LoginPageStepDef {
        private WebDriver driver;
        private LoginPage loginPage;
 
-      @Before
-      public void setup(){
-          driver = new ChromeDriver();
-      }
+    @Before
+    public void setup() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless=new"); // or "--headless" for older versions
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
 
-      @After
+        driver = new ChromeDriver(options);
+    }
+    
+    @After
       public void tearDown(){
           if(driver!=null){
               driver.quit();
